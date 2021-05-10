@@ -322,6 +322,7 @@ class AnalyzeContext {
 		while(result != null){
     		//数量词合并
     		this.compound(result);
+    		//当分词的结果长度小于2 直接删除，ik_max_word 有bug，如果将2改为1 报错
     		if(result.getLength() < 2|| Dictionary.getSingleton().isStopWord(this.segmentBuff ,  result.getBegin() , result.getLength())){
        			//是停止词继续取列表的下一个
     			result = this.results.pollFirst();
